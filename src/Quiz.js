@@ -1,7 +1,10 @@
 import turn from '../src/assets/turn.png'
 import logo from '../src/assets/logo-mini.png'
+import sad from '../src/assets/sad.png'
+import happy from '../src/assets/party.png'
 import { useState } from 'react'
-
+let card =0;
+let pointCounter =0;
 const contentcards =[
     {question:'O que é JSX?', answer:'Uma extensão de linguagem do JavaScript'},
     {question:'O React é __ ', answer:'uma biblioteca JavaScript para construção de interfaces'},
@@ -12,10 +15,11 @@ const contentcards =[
     {question:'Usamos props para __', answer:'passar diferentes informações para componentes '},
     {question:'Usamos estado (state) para __ ', answer:'dizer para o React quais informações quando atualizadas devem renderizar a tela novamente'},
 ]
-export default function Quiz(){
-    const[state,setState]=useState('front')
-    const[color,setColor]=useState('none')
-    const[card,setCard]=useState(0)
+export default function Quiz({setPage}){
+    //const[card,setCard]=useState(0)
+    const[state,setState]=useState(<CardFront question={contentcards[card].question}  index={card+1}/>)
+    const[color,setColor]=useState(<CardBackReaction question={contentcards[card].question} index ={card+1}color='none' answer ={contentcards[card].answer}/>)
+  
     
     function CardFront(props){
         
@@ -24,7 +28,7 @@ export default function Quiz(){
             <div className="card">
                 <header className="top-card-bar"><span>{props.index}/{contentcards.length}</span></header>
                 <h1>{props.question}</h1>
-                <img className="turn-back-button" onClick={()=>setState('back')} src={turn}/>
+                <img className="turn-back-button" onClick={()=>setState(<CardBack index={card+1} question={contentcards[card].question} answer ={contentcards[card].answer} />)} src={turn}/>
             </div>
             </>
         )
@@ -37,12 +41,12 @@ export default function Quiz(){
                 <header className="top-card-bar"><div className="title-question">{props.question}</div> <span>{props.index}/{contentcards.length}</span></header>
                 <h1>{props.answer}</h1>
                 <div className="bottom-bar">
-                    <button onClick={()=>setColor('a')} id="a">Aprendi agora</button>
-                    <button onClick={()=>setColor('b')} id="b">Não lembrei</button>
-                    <button onClick={()=>setColor('c')} id="c">Lembrei com esforço</button>
-                    <button onClick={()=>setColor('d')} id="d">Zap!</button>
+                    <button onClick={()=>setState(<CardBackReaction question={contentcards[card].question} index ={card+1} color="a" answer ={contentcards[card].answer}/>)} id="a">Aprendi agora</button>
+                    <button onClick={()=>{setState(<CardBackReaction question={contentcards[card].question} index ={card+1} color="b" answer ={contentcards[card].answer}/>); pointCounter++; }} id="b">Não lembrei</button>
+                    <button onClick={()=>setState(<CardBackReaction question={contentcards[card].question} index ={card+1} color='c' answer ={contentcards[card].answer}/>)} id="c">Lembrei com esforço</button>
+                    <button onClick={()=>setState(<CardBackReaction question={contentcards[card].question} index ={card+1} color='d' answer ={contentcards[card].answer}/>)} id="d">Zap!</button>
+                </div>            
                 </div>
-            </div>
             </>
         )
     }
@@ -58,30 +62,62 @@ export default function Quiz(){
         )
     }
     function final(){
- 
             {
                 if(card<(contentcards.length -1)){
-                    
-                    
-                    setCard(card+1); 
-                    setState('front'); 
+                    //setCard(card+1);
+                    card++; 
+                    setState(<CardFront question={contentcards[card].question}  index={card+1}/>); 
                     setColor('none');
-                    
-                     
                 }
-                else{alert("Ok")}
-
+                else{setState(<FinalPage point ={pointCounter}/>)}
             }
-
     }
 
     return(
         <>
         <header className="top-bar"><img src={logo}/></header>
         <div className="cards">
-        {state=='front'?<CardFront question={contentcards[card].question}  index={card+1}/> : color=='none'? <CardBack index={card+1} question={contentcards[card].question} answer ={contentcards[card].answer} />:<CardBackReaction question={contentcards[card].question} index ={card+1}color={color} answer ={contentcards[card].answer}/>}        
+        {state/* {state=='front'?<CardFront question={contentcards[card].question}  index={card+1}/> : color=='none'? :<CardBackReaction question={contentcards[card].question} index ={card+1}color={color} answer ={contentcards[card].answer}/>}         */}
+        
         </div>
         </>
     )
 }
 
+function FinalPage(props){
+    return (
+        <>
+          {props.point>0? <Fail/>: <Sucess/>}
+        
+        </>
+    )
+}
+
+function Fail(){
+    return  (
+        <>
+        <div className="result-container">
+            <div className="result"> 
+            Putz ...
+            <img src = {sad}/> 
+            <p className="text-result">Você esqueceu alguns flashcards.. Não desanime! Na próxima você consegue!</p>
+            </div>
+
+        </div>
+        </>
+    )
+}
+function Sucess(){
+    return  (
+        <>
+        <div className="result-container">
+            <div className="result"> 
+            PARABÉNS! 
+            <img src = {happy}/> 
+            <p className="text-result">Você não esqueceu de nenhum flashcard!</p>
+            </div>
+
+        </div>
+        </>
+    )
+}

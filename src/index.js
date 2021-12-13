@@ -12,13 +12,13 @@ const minhaTela = document.querySelector(".root");
 ReactDOM.render(<App/>, minhaTela); 
 
 export default function App(){
-    const [page,setPage]=useState('home')
+    const [page,setPage]=useState(<Home/>)
     function Home(){
         return(
             <>
             <div className="content">
                 <img className="home-image" src={logo}/>
-                <button onClick={()=>setPage('card')}>
+                <button onClick={()=>setPage(<Quiz/>)}>
                     Praticar React
                     <ion-icon name="caret-forward-outline"></ion-icon>
                     <ion-icon name="caret-forward-outline"></ion-icon>
@@ -29,8 +29,7 @@ export default function App(){
     }
     return(
         <>
-        {page=='home'?<Home></Home> : <Quiz></Quiz>} 
-        
+        {page}       
         
         </>
     )
@@ -38,7 +37,3 @@ export default function App(){
 
 
 
-
-
-
-//  const [paginaAtual,setPaginaAtual] = useState('home')

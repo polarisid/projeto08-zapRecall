@@ -154,3 +154,34 @@ text-align: center;
 #d{
     border:3px solid #FFEF61;
 }
+
+.result-container{
+    font-family: Roboto;
+display: flex;
+align-items: center;
+justify-content: center;
+margin-top: 15%;
+}
+.result-container img{
+    margin-left: 10px;
+}
+.result{
+
+font-size: 36px;
+font-style: normal;
+font-weight: 700;
+line-height: 42px;
+letter-spacing: 0em;
+text-align: center;
+}
+
+.text-result{
+margin-top: 10px;
+font-size: 22px;
+font-style: normal;
+font-weight: 400;
+line-height: 26px;
+letter-spacing: 0em;
+text-align: center;
+
+}
