@@ -1,0 +1,156 @@
+*{
+    box-sizing: border-box;
+    font-family: Roboto;
+
+}
+
+/*Estilo da Home*/
+.home-image{
+    margin-top: 10%;
+    margin-bottom: 5%;
+    width: 218px;
+}
+
+.content{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.content button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 345px;
+    height: 72px;
+    border: 3px solid #FFEF61;
+    border-radius: 12px;
+    background-color: #fff;
+    text-align: center;
+
+    font-family: Roboto;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 23px;
+    letter-spacing: 0em;
+}
+button ion-icon{
+    color: #FFEF61;
+    font-size: 20px;
+}
+/*Estilo da Home Final*/
+.top-bar{
+    width: 100%;
+}
+.cards{
+    transform-style: preserve-3d;
+    position: relative;
+}
+
+.card{
+    padding: 20px 40px 20px 40px;
+    position: relative;
+    margin:0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 392px;
+    height: 575px;
+    background: #FFFFFF;
+    box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.12);
+    border-radius: 12px;
+}
+.top-card-bar{
+    display:  flex;
+    justify-content: flex-end;
+}
+.card header{
+    margin-top: 12px;
+    margin-right: 12px;
+    font-family: Roboto;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 21px;
+    letter-spacing: 0em;
+    text-align: end;
+}
+.card h1{
+    font-family: Roboto;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 33px;
+    letter-spacing: 0em;
+    margin: auto auto;
+
+
+}
+.turn-back-button{
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: 40px;
+    /* margin: 0 0 0 auto ;
+    margin-right: 12px;
+    margin-bottom: 12px; */
+}
+header span{
+    position: absolute ;
+    top: 18px;
+    right: 16px;
+font-size: 18px;
+font-style: normal;
+font-weight: 400;
+line-height: 21px;
+letter-spacing: 0em;
+text-align: left;
+
+}
+.title-question{
+  margin: 0 auto;
+  font-family: Roboto;
+font-size: 12px;
+font-style: normal;
+font-weight: 700;
+line-height: 14px;
+letter-spacing: 0em;
+text-align: left;
+
+}
+.bottom-bar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.bottom-bar button{
+    background: #FFFFFF;
+    border-radius: 12px;
+    border:3px solid #000;
+    width: 65px;
+    height: 48px;
+font-size: 10px;
+font-style: normal;
+font-weight: 400;
+line-height: 12px;
+letter-spacing: 0em;
+text-align: center;
+
+}
+
+#a{
+    border:3px solid #000;
+}
+#b{
+    border:3px solid #F64848;
+}
+#c{
+    border:3px solid #62DB38;
+}
+#d{
+    border:3px solid #FFEF61;
+}
